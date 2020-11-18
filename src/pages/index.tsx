@@ -15,7 +15,7 @@ interface Data {
 }
 const IndexPage = () => {
   
-  const [readData, setReadData]= useState([])
+  const [readData, setReadData]= useState<null | Data[]>([])
   const [fetchedData, setFetchedData]=useState(false)
   const [inputTexdId, setInputTextId]=useState<null | number>()
   
@@ -32,6 +32,7 @@ const IndexPage = () => {
       })
     })()
   },[fetchedData])
+  console.log(readData)
   //delete
   const deleteMessage =async (message)=>{
     await fetch('/.netlify/functions/delete',{
