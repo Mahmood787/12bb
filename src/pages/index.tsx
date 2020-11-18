@@ -60,8 +60,8 @@ const IndexPage = () => {
             <p className="para1">Lets create some todos</p>
             <Formik
               validationSchema={schema}
-              onSubmit={(value, actions)=>{
-                fetch("/.netlify/functions/create",{
+              onSubmit={async(value, actions)=>{
+                await fetch("/.netlify/functions/create",{
                   method:"post",
                   body: JSON.stringify(value)
                 })
