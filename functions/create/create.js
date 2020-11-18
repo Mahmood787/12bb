@@ -16,6 +16,7 @@ const handler = async (event) => {
     let result = await client.query(
       q.Create(q.Collection('message'), {data: obj})
     )
+    const subject = event.queryStringParameters.name || "World"
     return {
       statusCode: 200,
       body: JSON.stringify({id: `${result.ref.id}`})

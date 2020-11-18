@@ -15,7 +15,7 @@ interface Data {
 }
 const IndexPage = () => {
   
-  const [readData, setReadData]= useState<null | Data[]>([])
+  const [readData, setReadData]= useState([])
   const [fetchedData, setFetchedData]=useState(false)
   const [inputTexdId, setInputTextId]=useState<null | number>()
   
@@ -60,8 +60,8 @@ const IndexPage = () => {
             <p className="para1">Lets create some todos</p>
             <Formik
               validationSchema={schema}
-              onSubmit={async(value, actions)=>{
-                await fetch("/.netlify/functions/create",{
+              onSubmit={(value, actions)=>{
+                  fetch("/.netlify/functions/create",{
                   method:"post",
                   body: JSON.stringify(value)
                 })
@@ -93,7 +93,7 @@ const IndexPage = () => {
             </Formik> 
           </div>
         <div className="read-data">
-          {readData.length >= 1 ? readData.map((res,i)=>(
+          {readData.length >= 1 ? readData.map((res:any,i)=>(
           <div key={i}>
           <p className="todo-p"> <span>{i+1}- </span>{res.data.message}</p>
           { inputTexdId===i ? (
