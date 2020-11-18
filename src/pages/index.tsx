@@ -24,7 +24,7 @@ const IndexPage = () => {
     
   })
   useEffect(()=>{
-    (async()=>{
+    ;(async()=>{
       await fetch("/.netlify/functions/read")
       .then(res=> res.json())
       .then((data)=>{
